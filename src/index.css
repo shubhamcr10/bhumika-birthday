@@ -1,95 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Karla:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Romantic Editorial Birthday — design tokens. All colors HSL. */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core warm palette */
+    --background: 36 38% 98%;          /* ivory */
+    --foreground: 28 17% 25%;          /* walnut */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 36 30% 99%;
+    --card-foreground: 28 17% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 36 38% 98%;
+    --popover-foreground: 28 17% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Ribbon tone — soft terracotta blush */
+    --primary: 17 41% 70%;
+    --primary-foreground: 36 38% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 24 39% 93%;           /* blush */
+    --secondary-foreground: 28 17% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 28 25% 90%;
+    --muted-foreground: 28 12% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 25 45% 85%;              /* sunlight */
+    --accent-foreground: 28 17% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 36 38% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 28 20% 88%;
+    --input: 28 20% 88%;
+    --ring: 17 41% 70%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    /* Bespoke birthday tokens */
+    --ivory: 36 38% 98%;
+    --walnut: 28 17% 25%;
+    --walnut-soft: 28 14% 38%;
+    --blush: 24 39% 93%;
+    --sunlight: 25 45% 85%;
+    --ribbon: 17 41% 70%;
+    --rose-deep: 8 45% 55%;
+    --gold-leaf: 38 55% 65%;
+
+    /* Gradients */
+    --gradient-morning: radial-gradient(ellipse at top right, hsl(var(--sunlight) / 0.5), transparent 60%),
+                        radial-gradient(ellipse at bottom left, hsl(var(--blush) / 0.7), transparent 60%);
+    --gradient-ribbon: linear-gradient(135deg, hsl(var(--ribbon)), hsl(var(--gold-leaf)));
+    --gradient-letter: linear-gradient(180deg, hsl(var(--ivory)), hsl(var(--blush) / 0.4));
+
+    /* Shadows */
+    --shadow-polaroid: 0 20px 60px -10px hsl(var(--walnut) / 0.18), 0 4px 12px -2px hsl(var(--walnut) / 0.08);
+    --shadow-soft: 0 30px 80px -30px hsl(var(--walnut) / 0.25);
+    --shadow-glow: 0 0 60px hsl(var(--ribbon) / 0.3);
+
+    /* Transitions */
+    --ease-silk: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --transition-silk: all 0.7s var(--ease-silk);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -99,7 +80,95 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Karla', sans-serif;
+    font-weight: 300;
+    background-image: var(--gradient-morning);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--ribbon) / 0.25);
+    color: hsl(var(--walnut));
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .font-serif { font-family: 'Cormorant Garamond', serif; }
+  .font-script { font-family: 'Caveat', cursive; }
+  .font-sans-soft { font-family: 'Karla', sans-serif; }
+
+  .eyebrow {
+    @apply text-[10px] uppercase tracking-[0.28em] text-walnut-soft font-light;
+    font-family: 'Karla', sans-serif;
+  }
+
+  .ribbon-divider {
+    @apply inline-block w-10 h-px bg-ribbon/70;
+  }
+
+  .polaroid {
+    @apply bg-card p-3 md:p-5 pb-12 md:pb-16 border border-walnut/5;
+    box-shadow: var(--shadow-polaroid);
+    transition: var(--transition-silk);
+  }
+
+  .polaroid:hover {
+    transform: rotate(0deg) translateY(-6px);
+  }
+
+  .nav-link {
+    @apply relative eyebrow transition-colors duration-500 hover:text-walnut;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-px w-0 bg-ribbon transition-all duration-500;
+  }
+
+  .nav-link:hover::after,
+  .nav-link[data-active="true"]::after {
+    @apply w-full;
+  }
+
+  .nav-link[data-active="true"] {
+    @apply text-walnut;
+  }
+}
+
+@layer utilities {
+  .text-walnut { color: hsl(var(--walnut)); }
+  .text-walnut-soft { color: hsl(var(--walnut-soft)); }
+  .text-ribbon { color: hsl(var(--ribbon)); }
+  .text-rose-deep { color: hsl(var(--rose-deep)); }
+  .text-gold-leaf { color: hsl(var(--gold-leaf)); }
+
+  .bg-ivory { background-color: hsl(var(--ivory)); }
+  .bg-blush { background-color: hsl(var(--blush)); }
+  .bg-sunlight { background-color: hsl(var(--sunlight)); }
+  .bg-ribbon { background-color: hsl(var(--ribbon)); }
+
+  .border-ribbon { border-color: hsl(var(--ribbon)); }
+  .border-walnut { border-color: hsl(var(--walnut)); }
+
+  .bg-gradient-ribbon { background-image: var(--gradient-ribbon); }
+  .bg-gradient-letter { background-image: var(--gradient-letter); }
+
+  .shadow-polaroid { box-shadow: var(--shadow-polaroid); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 }
